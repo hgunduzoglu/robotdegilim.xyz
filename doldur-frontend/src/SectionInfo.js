@@ -23,11 +23,7 @@ export const SectionInfo = ({ sectionDetails, color }) => {
 
   const renderTimes = () => {
     return sectionDetails.lectureTimes.map((t, index) => (
-      <div
-        className="section-date"
-        style={{ background: color.ternary }}
-        key={index}
-      >
+      <div className="section-date" key={index}>
         <div className="time-row">
           {days[t.day] +
             " " +
@@ -56,8 +52,8 @@ export const SectionInfo = ({ sectionDetails, color }) => {
   );
 
   return (
-    <div className="section-info" style={{ background: color.secondary }}>
-      <div>{"Section " + sectionDetails.sectionNumber}</div>
+    <div className="section-info">
+      <div className="section-title">{"Section " + sectionDetails.sectionNumber}</div>
       <Divider />
       <div className="section-row">
         {"Instructor: " + sectionDetails.instructor}

@@ -121,16 +121,12 @@ const ModernAccordionDetails = withStyles((theme) => ({
 
 const SectionSelector = withStyles((theme) => ({
   root: {
-    backgroundColor: theme.palette.type === 'dark'
-      ? 'rgba(255, 255, 255, 0.05)'
-      : 'rgba(255, 255, 255, 0.5)',
-    borderRadius: '12px',
+    backgroundColor: '#ffffff',
+    borderRadius: '10px',
     padding: theme.spacing(2),
     marginTop: theme.spacing(2),
-    backdropFilter: 'blur(10px)',
-    border: theme.palette.type === 'dark'
-      ? '1px solid rgba(255, 255, 255, 0.1)'
-      : '1px solid rgba(255, 255, 255, 0.2)',
+    border: '1px solid #e5e7eb',
+    boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
   },
 }))(Box);
 

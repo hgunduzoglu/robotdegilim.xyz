@@ -114,6 +114,12 @@ export const AddDontFillWidget = ({ startHour, startMin, endHour, endMin }) => {
 
   return (
     <Paper style={styles.paper}>
+      <div className="df-header">
+        <Typography variant="subtitle2" className="df-title">Don't Fill Blocks</Typography>
+        <Typography variant="caption" color="textSecondary">
+        Add times when you are unavailable; the program will not schedule classes during these times.
+        </Typography>
+      </div>
       <div className="add-df-row">
         {renderDayPick(day, setDay)}
         {renderHourPick(startH, setStartH)}
@@ -152,9 +158,9 @@ export const AddDontFillWidget = ({ startHour, startMin, endHour, endMin }) => {
 
 const styles = {
   paper: {
-    backgroundColor: "aliceblue",
+    backgroundColor: "white",
     margin: 15,
-    padding: 3,
+    padding: 9,
   },
   dropdown: {
     marginTop: "auto",

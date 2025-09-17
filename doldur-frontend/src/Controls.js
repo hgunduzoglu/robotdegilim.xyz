@@ -13,6 +13,7 @@ import {
   Typography,
   Divider,
 } from "@material-ui/core";
+import InputAdornment from "@material-ui/core/InputAdornment";
 import MuiAlert from "@material-ui/lab/Alert";
 import AddIcon from "@material-ui/icons/Add";
 import EventAvailableIcon from "@material-ui/icons/EventAvailable";
@@ -20,6 +21,7 @@ import ImportContactsIcon from "@material-ui/icons/ImportContacts";
 import DeleteIcon from "@material-ui/icons/Delete";
 import SaveIcon from "@material-ui/icons/Save";
 import SaveAltIcon from "@material-ui/icons/SaveAlt";
+import AssignmentIcon from "@material-ui/icons/Assignment";
 import { isMobile } from "react-device-detect";
 import ls from "local-storage";
 import { resetScenarios, setScenarios } from "./slices/scenariosSlice";
@@ -36,6 +38,8 @@ import "./Controls.css";
 import { resetDontFills } from "./slices/dontFillsSlice";
 import NTEDialog from "./NTEDialog";
 import SchoolIcon from "@material-ui/icons/School";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import BusinessIcon from "@material-ui/icons/Business";
 
 export const Controls = (props) => {
   const { currentScenario } = props;
@@ -495,6 +499,15 @@ export const Controls = (props) => {
             inputProps={{ maxLength: 12 }}
             variant="outlined"
             size="small"
+            placeholder="e.g. YILMAZ"
+            className="pretty-textfield"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <AccountCircle fontSize="small" />
+                </InputAdornment>
+              ),
+            }}
             onChange={(e) => setSurname(e.target.value.toUpperCase())}
           />
         </div>
@@ -507,17 +520,40 @@ export const Controls = (props) => {
             inputProps={{ maxLength: 12 }}
             variant="outlined"
             size="small"
+            placeholder="e.g. CENG"
+            className="pretty-textfield"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <BusinessIcon fontSize="small" />
+                </InputAdornment>
+              ),
+            }}
             onChange={(e) => setDepartment(e.target.value.toUpperCase())}
           />
         </div>
         <div className="textfield-wrapper">
-          <FormControl variant="outlined" size="small" className="form-control">
+          <FormControl variant="outlined" size="small" className="form-control pretty-select">
             <InputLabel style={{ background: "white" }}>Semester</InputLabel>
             <Select
               error={errorSemester}
               value={semester}
               onChange={(e) => setSemester(e.target.value)}
               label="Semester"
+              displayEmpty
+              MenuProps={{
+                PaperProps: {
+                  style: {
+                    borderRadius: 10,
+                    boxShadow: "0 10px 24px rgba(0,0,0,0.12)",
+                    maxHeight: 320,
+                  },
+                },
+                MenuListProps: { dense: true },
+                getContentAnchorEl: null,
+                anchorOrigin: { vertical: "bottom", horizontal: "left" },
+                transformOrigin: { vertical: "top", horizontal: "left" },
+              }}
             >
               {renderSemesterSelections(8)}
             </Select>
@@ -530,6 +566,7 @@ export const Controls = (props) => {
           <Button
             variant="contained"
             color="secondary"
+            className="pretty-button pretty-secondary"
             startIcon={<AddIcon />}
             onClick={handleAddMustCourse}
           >
@@ -539,27 +576,8 @@ export const Controls = (props) => {
         <div className="control-button">
           <Button
             variant="contained"
-            style={{ backgroundColor: "#0DAEEE", color: "white" }}
-            startIcon={<ImportContactsIcon style={{ color: "white" }} />}
-            onClick={() => openInNewTab("https://metu-non.tech")}
-          >
-            NTE Catalog
-          </Button>
-        </div>
-        <div className="control-button">
-          <Button
-            variant="contained"
-            style={{ backgroundColor: "#FF9800", color: "white" }}
-            startIcon={<SchoolIcon style={{ color: "white" }} />}
-            onClick={handleGetAvailableNTE}
-          >
-            Get Available NTE
-          </Button>
-        </div>
-        <div className="control-button">
-          <Button
-            variant="contained"
             color="primary"
+            className="pretty-button pretty-primary"
             startIcon={<EventAvailableIcon />}
             onClick={handleScheduleBegin}
           >
@@ -569,7 +587,29 @@ export const Controls = (props) => {
         <div className="control-button">
           <Button
             variant="contained"
-            style={{ backgroundColor: "red", color: "white" }}
+            className="pretty-button pretty-warning"
+            style={{ color: "white" }}
+            startIcon={<SchoolIcon style={{ color: "white" }} />}
+            onClick={handleGetAvailableNTE}
+          >
+            Get Available NTE
+          </Button>
+        </div>
+        <div className="control-button">
+          <Button
+            variant="contained"
+            className="pretty-button pretty-secondary"
+            startIcon={<ImportContactsIcon />}
+            onClick={() => openInNewTab("https://metu-non.tech")}
+          >
+            NTE Catalog
+          </Button>
+        </div>
+        <div className="control-button">
+          <Button
+            variant="contained"
+            className="pretty-button pretty-danger"
+            style={{ color: "white" }}
             startIcon={<DeleteIcon style={{ color: "white" }} />}
             onClick={handleClearCourses}
           >
@@ -585,6 +625,7 @@ export const Controls = (props) => {
         <Button
           variant="contained"
           color="primary"
+          className="pretty-button pretty-primary"
           onClick={saveData}
           startIcon={<SaveIcon />}
           style={{ margin: "6pt" }}
@@ -595,6 +636,7 @@ export const Controls = (props) => {
           <Button
             variant="contained"
             color="primary"
+            className="pretty-button pretty-primary"
             onClick={loadRestoredData}
             startIcon={<SaveAltIcon />}
             style={{ margin: "6pt" }}
@@ -639,6 +681,28 @@ export const Controls = (props) => {
           {"   Last added Semester: " + lastUpdated.t.split(":")[1]}
         </Typography>
       ) : null}
+      <Divider />
+      <div className="controls-section">
+        <div className="controls-section-header">Free Electives</div>
+        <div className="control-row" style={{ justifyContent: "center" }}>
+          <Typography variant="body2" color="textSecondary" style={{ maxWidth: 720 }}>
+            Help us crowdsource Free Elective courses. Share the elective courses you have taken or know about.
+            We will use these submissions to build an upcoming Free Electives section for everyone.
+          </Typography>
+        </div>
+        <div className="control-row">
+          <div className="control-button">
+            <Button
+              variant="contained"
+              className="pretty-button pretty-secondary"
+              startIcon={<AssignmentIcon />}
+              onClick={() => openInNewTab("https://forms.gle/RgpEk9vETPKZUGXt5")}
+            >
+              Free Elective Form
+            </Button>
+          </div>
+        </div>
+      </div>
       
       <NTEDialog
         open={nteDialogOpen}

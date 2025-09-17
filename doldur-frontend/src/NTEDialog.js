@@ -181,6 +181,7 @@ const NTEDialog = ({ open, onClose, occupiedSlots, onAddCourse }) => {
                                                                     ))}
                                                                     <Button
                                                                         size="small"
+                                                                        className="pretty-button small"
                                                                         startIcon={<AddIcon />}
                                                                         onClick={() => handleAddNTE(course, section)}
                                                                         style={{ marginTop: 4 }}
@@ -204,7 +205,7 @@ const NTEDialog = ({ open, onClose, occupiedSlots, onAddCourse }) => {
             </DialogContent>
             
             <DialogActions>
-                <Button onClick={onClose} color="primary">
+                <Button onClick={onClose} color="primary" className="pretty-button pretty-primary">
                     Close
                 </Button>
             </DialogActions>

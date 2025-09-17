@@ -8,17 +8,30 @@
 .add-course-row {
     display: inline-flex;
     width: 100%;
-    flex-wrap: wrap;
-}
-.category-select {
-    min-width: 90%;
-    margin-right: 6pt;
-}
-.category-form{
-    background: #FFFFFF;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
 }
 .add-course-name {
     background: #FFFFFF;
+    flex: 1 1 auto;
+}
+
+/* Pretty autocomplete refinements */
+.pretty-autocomplete .MuiOutlinedInput-root {
+  border-radius: 10px;
+}
+
+.pretty-autocomplete .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(0,0,0,0.15);
+}
+
+.pretty-autocomplete:hover .MuiOutlinedInput-notchedOutline {
+  border-color: rgba(0,0,0,0.25);
+}
+
+.pretty-autocomplete .MuiInputBase-input::placeholder {
+  color: #9ca3af;
 }
 
 /* Mobile responsive adjustments */
@@ -26,9 +39,6 @@
   .add-course-row {
     flex-direction: column;
     gap: 6pt;
-  }
-  .category-select {
-    min-width: 100%;
-    margin-right: 0;
+    flex-wrap: wrap;
   }
 }

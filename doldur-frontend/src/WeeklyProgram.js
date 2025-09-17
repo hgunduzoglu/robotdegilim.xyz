@@ -190,6 +190,7 @@ export const WeeklyProgram = ({ currentScenario, setCurrentScenario }) => {
         <Button
           variant="contained"
           color="primary"
+          className="pretty-button pretty-primary"
           style={{ margin: "6pt" }}
           startIcon={<PhotoCameraIcon />}
           onClick={() => doCapture()}

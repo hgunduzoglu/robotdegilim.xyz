@@ -112,6 +112,7 @@ export const ExportCalendar = ({ events }) => {
           <Button
             variant="contained"
             color="secondary"
+            className="pretty-button pretty-secondary"
             startIcon={<BackupIcon />}
             onClick={handleExport}
             disabled={true}

@@ -18,8 +18,8 @@ export const AdvancedSettings = ({ settings, onSettingsChange }) => {
   };
 
   return (
-    <div className="course-settings-wrapper">
-      <Accordion style={{ background: "aliceblue" }}>
+    <div className="course-settings-wrapper adv-accordion">
+      <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
